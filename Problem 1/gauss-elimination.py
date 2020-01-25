@@ -48,7 +48,7 @@ def solve_gauss(A, B):
     return det, X
 
 
-n=500
+n=50
 a = create_tridiag(1, 4, -1, n)
 b = [1 for i in range(n)]
 d, result = solve_gauss(a, b)
