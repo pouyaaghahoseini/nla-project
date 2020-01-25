@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 def create_tridiag(l, r, u, n):
     A = np.zeros((n, n))
     temp = np.ones(n - 1)
@@ -42,6 +42,9 @@ x = np.ones(n)
 print(x)
 
 # loop run for m times depending on m the error value
+start = time.time()
 x = seidel(a, x, b)
     # print each time the updated solution
+end = time.time()
 print(x)
+print("Time: ", end - start)
