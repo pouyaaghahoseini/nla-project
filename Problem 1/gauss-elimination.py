@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def create_tridiag(a, b, c, n):
     A = np.zeros((n, n))
     for i in range(n):
@@ -48,7 +49,9 @@ def solve_gauss(A, B):
     return det, X
 
 
-n=50
+'''___Main___'''
+
+n = 50
 a = create_tridiag(1, 4, -1, n)
 b = [1 for i in range(n)]
 d, result = solve_gauss(a, b)
