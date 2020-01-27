@@ -1,5 +1,6 @@
 import numpy as np
 import time
+from scipy.linalg import solve
 def create_tridiag(l, r, u, n):
     A = np.zeros((n, n))
     temp = np.ones(n - 1)
@@ -9,7 +10,7 @@ def create_tridiag(l, r, u, n):
     return A
 
 
-def SOR(a, x, b):
+def SOR(a, x, b, Iteration = False):
     x0 = np.copy(x)
     n = len(x)
     w = 1.5
@@ -22,7 +23,8 @@ def SOR(a, x, b):
         x[j] = (1-w) * x[i] + d / a[j][j]
     # Iterate Seidel
     while np.linalg.norm(np.subtract(x, x0)) > 0.0001:
-        print("Iteration: " + str(x))
+        if Iteration == True:
+            print("Iteration: " + str(x))
         x0 = np.copy(x)
         for j in range(0, n):
             # temp variable d to store b[j]
@@ -44,8 +46,9 @@ print(x)
 
 # loop run for m times depending on m the error value
 start = time.time()
-x = SOR(a, x, b)
+x = SOR(a, x, b, Iteration = False)
     # print each time the updated solution
 end = time.time()
+print("Scipy Result: ", solve(a, b))
 print(x)
 print("Time: ", end - start)

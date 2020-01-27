@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 
 def create_tridiag(a, b, c, n):
     A = np.zeros((n, n))
@@ -15,7 +15,6 @@ def solve_gauss(A, B):
     n = len(A)
     det = 1
     for i in range(n):
-
         # Find Maximum Row
         maxRow = i
         for j in range(i + 1, n):
@@ -54,7 +53,10 @@ def solve_gauss(A, B):
 n = 50
 a = create_tridiag(1, 4, -1, n)
 b = [1 for i in range(n)]
+start = time.time()
 d, result = solve_gauss(a, b)
+end = time.time()
 print("Determinant: ", d)
 print("Result: ", result)
 print("NumPy Result: ", np.linalg.solve(a, b))
+print("Time: ", end - start)

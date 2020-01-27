@@ -1,4 +1,5 @@
 import numpy as np
+import time
 import scipy
 from scipy.linalg import solve
 
@@ -31,5 +32,8 @@ np.fill_diagonal(A[1:], temp)
 np.fill_diagonal(A[:,1:], -temp)
 b = np.ones(n)
 x = np.ones(n)
+start = time.time()
 jacobi(A,b,x,n, Iteration=False)
+end = time.time()
 print("Scipy Result: ", solve(A, b))
+print("Time: ", end - start)
